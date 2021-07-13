@@ -3,8 +3,11 @@ import './App.css';
 import axios from "axios";
 import * as yup from "yup"
 import Form from "./Form"
+import User from "./User"
 import schema from "./Schema"
 import {validate} from "uuid"
+
+import User from "./User"
 
 const initialFormValues = {
   //text inputs
@@ -37,7 +40,7 @@ function App() {
   const getUsers = () =>{
     axios.get("https://reqres.in/api/users")
       .then(res => {
-        setUsers(res.data)   // may have to double check res.data if not working later *****
+        setUsers(res.data)
         console.log(res)
       })
       .catch(err => {
@@ -76,20 +79,51 @@ function App() {
 
 
   //event handler
-  
-  
-  
-  
-  
-  
-  
-  
+
+  const inputChange = (name, value) => {
+    validate(name, value)
+    setFormValues({
+      ...formValues, [name]: value
+    })
+  }
+
+  const formSubmit = () => {
+    const newUser = {
+      name: formValues.name.trim(),
+      email: formValues.email.trim(),
+      password: formValues.password,  /// should you trim a password?
+      termsOfService: [].filter(terms => formValues[terms]),  /// this may not work
+    }
+    postNewUser(newUser)
+  }
+
+
+  ///side effects
+  useEffect(() => {
+    getUsers()
+  }, [])
+
+
+  useEffect(() => {
+    schema.isValid(formValues)
+      .then(valid => {
+        setDisabled(!valid)
+      })
+  }, [formValues])
   
   
   return (
     <div className="App">
       <header className="App-header">
-       
+        <h1>Users App</h1>
+    
+        {/* {
+          users.map(user => {
+            return(
+              <User key={user.id} details={user} />
+            )
+          })
+        } */}
       </header>
     </div>
   );
