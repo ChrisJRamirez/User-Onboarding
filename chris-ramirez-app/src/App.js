@@ -7,7 +7,7 @@ import User from "./User"
 import schema from "./Schema"
 import {validate} from "uuid"
 
-import User from "./User"
+
 
 const initialFormValues = {
   //text inputs
@@ -116,15 +116,28 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Users App</h1>
-    
-        {/* {
-          users.map(user => {
-            return(
-              <User key={user.id} details={user} />
-            )
-          })
-        } */}
       </header>
+
+      <section classname="Form-inputs">
+        <Form
+        values={formValues}
+        change={inputChange}
+        submit={formSubmit}
+        disabled={disabled}
+        errors={formErrors}
+        />
+        {
+        users.map(user => {
+          return (
+              <User key={user.id} details={user}/>
+          )
+        })
+      }
+
+
+      </section>
+        
+      
     </div>
   );
 }
