@@ -40,8 +40,7 @@ function App() {
   const getUsers = () =>{
     axios.get("https://reqres.in/api/users")
       .then(res => {
-        setUsers(res.data)
-        console.log(res)
+        setUsers(res.data.data)
       })
       .catch(err => {
         console.log(err)
@@ -51,7 +50,7 @@ function App() {
   const postNewUser = newUser => {
     axios.post("https://reqres.in/api/users", newUser)
       .then(res => {
-        setUsers([...users, res.data])
+        setUsers([...users, res.data.data])
       })
       .catch(err => {
         console.log(err)
@@ -118,7 +117,7 @@ function App() {
         <h1>Users App</h1>
       </header>
 
-      <section classname="Form-inputs">
+      <section className="Form-inputs">
         <Form
         values={formValues}
         change={inputChange}
@@ -126,18 +125,19 @@ function App() {
         disabled={disabled}
         errors={formErrors}
         />
+        
         {
-        users.map(user => {
-          return (
-              <User key={user.id} details={user}/>
-          )
-        })
-      }
+          users.map(user => {
+            return (
+              <User key={user.id} details={user} />
+            )
 
+          })
+          
+        }
 
       </section>
         
-      
     </div>
   );
 }

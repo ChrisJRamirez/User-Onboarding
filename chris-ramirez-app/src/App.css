@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #282c34;
 }
 
 .App-header {
@@ -14,6 +15,6 @@
 }
 
 .Form-inputs {
-  background-color: black;
+  background-color:#29bdc1;
   
 }

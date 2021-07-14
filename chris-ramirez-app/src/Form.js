@@ -22,12 +22,12 @@ export default function Form(props) {
   }
 
   return (
-    <form classname="form-container" onSubmit={onSubmit}>
-      <div classname = "form-group-submit">
+    <form className="form-container" onSubmit={onSubmit}>
+      <div className = "form-group-submit">
         <h2>Add a User</h2>
         <button disabled={disabled}>Submit</button>
 
-        <div classname="errors">
+        <div className="errors">
           <div>{errors.name}</div>
           <div>{errors.email}</div>
           <div>{errors.password}</div>
@@ -35,7 +35,7 @@ export default function Form(props) {
         </div>
       </div>
 
-      <div classname="form-group-inputs">
+      <div className="form-group-inputs">
         <h4>General Information</h4>
         <label>Name&nbsp;
           <input
@@ -65,7 +65,7 @@ export default function Form(props) {
         </label>
       </div>
 
-      <div classname="form-group-checkboxes">
+      <div className="form-group-checkboxes">
         <h4>Terms of Service</h4>
         <label>Agree
           <input
