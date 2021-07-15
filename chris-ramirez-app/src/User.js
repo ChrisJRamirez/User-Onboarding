@@ -7,7 +7,7 @@ export default function User({details}) {
 
   return (
     <div className = "user-container">
-      <h3>{details.name ? details.name : details.first_name & details.last_name}</h3>
+      <h3>{details.name ? details.name : details.first_name} </h3>
       
       <p>Email: {details.email}</p>
       
