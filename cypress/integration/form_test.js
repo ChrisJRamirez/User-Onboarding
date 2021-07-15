@@ -7,6 +7,8 @@ describe("form_test app", () => {
   const nameInput = () => cy.get('input[name="name"]')
   const emailInput = () => cy.get('input[name="email"]')
   const passwordInput = () => cy.get('input[name="password"]')
+  const checkbox = () => cy.get('[type="checkbox"]')
+  const submitBtn = () => cy.get('button[id=submitBtn]')
 
 
   // test 1 - name input
@@ -35,6 +37,30 @@ describe("form_test app", () => {
     passwordInput()
     .type("password")
   })
+
+  // test 5 - see if a user can check the agree to terms checkbox
+  it("check checkbox", () => {
+    checkbox().check()
+  })
+
+  // test 6 - check to see if user can submit the form
+  it("submit button is enabled after entering all data", () => {
+    nameInput().type("Chris")
+    emailInput().type("cjram@gmail.com")
+    passwordInput().type("password")
+    checkbox().check()
+    submitBtn().should("be.enabled")
+  })
+
+  // test 7 - check for form validation if an input is left empty
+  it("submit button is disabled when an input does not meet criteria/is left empty", () => {
+    nameInput().type("A")
+    emailInput().type("cjram@gmail.com")
+    passwordInput().type("password")
+    checkbox().check()
+    submitBtn().should("be.disabled")
+  })
+
 
 
 
