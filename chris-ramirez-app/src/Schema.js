@@ -11,6 +11,6 @@ export default yup.object().shape({
   .required("Password is required")
   .min(8, "Password must be 8 chars or longer"),
   //checkbox - must be boolean
-  termsOfService: yup.boolean(),
+  termsOfService: yup.boolean().oneOf([true]),
   
 })

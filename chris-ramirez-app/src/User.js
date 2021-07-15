@@ -6,11 +6,11 @@ export default function User({details}) {
   }
 
   return (
-    <div classname = "user-container">
-      <h3>{details.name}</h3>
+    <div className = "user-container">
+      <h3>{details.name ? details.name : details.first_name & details.last_name}</h3>
+      
       <p>Email: {details.email}</p>
-      <p>Password: {details.password}</p>
-      <p>Terms of Service: {details.termsOfService}</p>
+      
       
     </div>
   )

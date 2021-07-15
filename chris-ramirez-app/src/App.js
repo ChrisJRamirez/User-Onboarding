@@ -50,7 +50,7 @@ function App() {
   const postNewUser = newUser => {
     axios.post("https://reqres.in/api/users", newUser)
       .then(res => {
-        setUsers([...users, res.data.data])
+        setUsers([...users, res.data])
       })
       .catch(err => {
         console.log(err)
@@ -108,7 +108,7 @@ function App() {
       .then(valid => {
         setDisabled(!valid)
       })
-  }, [formValues])
+  }, [formValues, schema])
   
   
   return (
